@@ -86,7 +86,7 @@ class _ListPageState extends State<ListPage> {
                               Text(
                                 _list[index].album,
                                 style: TextStyle(
-                                  color: AppColors.styleColor,
+                                  color: AppColors.styleColor.withOpacity(0.7),
                                   fontSize: 16,
                                 ),
                               ),
