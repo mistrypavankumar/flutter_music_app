@@ -6,12 +6,16 @@ class CustomButtonWidget extends StatelessWidget {
   final double size;
   final double borderWidth;
   final String image;
+  final isActive;
+  final VoidCallback onTap;
 
   CustomButtonWidget({
     this.icon,
     @required this.size,
     this.image,
     this.borderWidth = 1.0,
+    this.isActive = false,
+    this.onTap,
   });
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,7 @@ class CustomButtonWidget extends StatelessWidget {
       ),
       border: Border.all(
         width: borderWidth,
-        color: AppColors.mainColor,
+        color: isActive ? AppColors.darkBlue : AppColors.mainColor,
       ),
       boxShadow: [
         BoxShadow(
@@ -31,18 +35,12 @@ class CustomButtonWidget extends StatelessWidget {
           spreadRadius: 3,
         ),
         BoxShadow(
-          color: Colors.white,
+          color: Colors.white60,
           blurRadius: 5,
           offset: Offset(-5, -5),
           spreadRadius: 3,
         ),
       ],
-      gradient: RadialGradient(colors: [
-        AppColors.mainColor,
-        AppColors.mainColor,
-        AppColors.mainColor,
-        Colors.white,
-      ]),
     );
 
     if (image != null) {
@@ -53,11 +51,42 @@ class CustomButtonWidget extends StatelessWidget {
         ),
       );
     }
+
+    if (isActive) {
+      boxDecoration = boxDecoration.copyWith(
+        gradient: RadialGradient(
+          colors: [
+            AppColors.lightBlue,
+            AppColors.darkBlue,
+          ],
+        ),
+      );
+    } else {
+      boxDecoration = boxDecoration.copyWith(
+        gradient: RadialGradient(
+          colors: [
+            AppColors.mainColor,
+            AppColors.mainColor,
+            AppColors.mainColor,
+            Colors.white,
+          ],
+        ),
+      );
+    }
     return Container(
       width: size,
       height: size,
       decoration: boxDecoration,
-      child: icon,
+      child: FlatButton(
+        padding: const EdgeInsets.all(0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(200),
+          ),
+        ),
+        onPressed: onTap,
+        child: icon,
+      ),
     );
   }
 }
