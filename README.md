@@ -1,3 +1,4 @@
 # flutter_music_app
 
-<img src = "https://user-images.githubusercontent.com/68140538/92629385-ddc2f800-f2eb-11ea-91b4-09f1a3bb5820.jpeg" height = 600 >
+<img src = "https://user-images.githubusercontent.com/68140538/93012707-126ed200-f5c0-11ea-9d2f-913f3e5ad0fa.jpg" height = 600 >
+
